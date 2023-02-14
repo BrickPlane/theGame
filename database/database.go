@@ -24,9 +24,7 @@ func CheckUserStat(p StatUser) {
 	p.PlayGame()
 }
 
-
-
-func initPlayer() {
+func InitPlayer() {
 	admin.MakeAdminMap()
 	player.MakePlayerMap()
 	support.MakeSupportData()
@@ -41,15 +39,23 @@ func initPlayer() {
 	CheckUserStat(supportInst)
 
 	CheckMap(adminInst)
-	CheckMap(playerInst)
-	CheckMap(supportInst)
-}
-func CheckMap(mapType any) {
+	// CheckMap(playerInst)
+	// CheckMap(supportInst)
 
+	fmt.Println("adminInst", adminInst)
+	// fmt.Println(playerInst)
+	// fmt.Println(supportInst)
+}
+
+func CheckMap(mapType any) {
+	fmt.Println("mapType", mapType)
 	covertObj, ok := mapType.(users.User)
 	if !ok {
 		fmt.Println("err")
+		fmt.Println("mapType 2", mapType)
+		// return
 	}
+	fmt.Println(covertObj)
 	switch covertObj.TpUser {
 	case users.ADMIN:
 		adminInst, _ := mapType.(admin.Admin)
@@ -60,5 +66,5 @@ func CheckMap(mapType any) {
 	case users.SUPPORT:
 		supportInst, _ := mapType.(support.Support)
 		support.SUPPORT_MAP[supportInst.Id] = supportInst
-		}
 	}
+}

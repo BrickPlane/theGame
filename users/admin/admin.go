@@ -2,12 +2,10 @@ package admin
 
 import (
 	"fmt"
-	"theGame/users"
-)
+	"theGame/users")
 
 type Admin struct {
 	users.User
-	users.Developer
 }
 
 func NewAdmin(

@@ -1,13 +1,13 @@
 package support
 
 import (
+	"errors"
 	"fmt"
 	"theGame/users"
 )
 
 type Support struct {
 	users.User
-	users.Developer
 }
 
 func NewSupport(
@@ -25,6 +25,16 @@ func NewSupport(
 		},
 	}
 }
+func (p *Support) setID(id int) error {
+	if id <= 0 {
+		return errors.New("Cant be less 1")
+	}
+
+	p.Id = id
+
+	return nil
+}
+
 
 func (p Support) PlayGame() {
 	fmt.Println("playGame")
