@@ -6,8 +6,8 @@ import (
 )
 
 type Admin struct {
+	Types int
 	users.User
-	users.Developer
 }
 
 func NewAdmin(
@@ -15,14 +15,16 @@ func NewAdmin(
 	addNickName, addEmail, addPassword string,
 	addTpUser users.TypeUser,
 ) *Admin{
+
 	return &Admin{
-		User: users.User{
-			Id: addId,
-			NickName: addNickName,
-			Email: addEmail,
-			Password: addPassword,
-			TpUser: addTpUser,
-		},
+		Types: 1,
+		// User: users.User{
+		// 	Id: addId,
+		// 	NickName: addNickName,
+		// 	Email: addEmail,
+		// 	Password: addPassword,
+		// 	TpUser: addTpUser,
+		// },
 	}
 }
 

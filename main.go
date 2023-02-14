@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"theGame/database"
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Hello 'theGame'")
+	database.InitPlayer()
 }

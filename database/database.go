@@ -26,7 +26,7 @@ func CheckUserStat(p StatUser) {
 
 
 
-func initPlayer() {
+func InitPlayer() {
 	admin.MakeAdminMap()
 	player.MakePlayerMap()
 	support.MakeSupportData()
@@ -41,24 +41,31 @@ func initPlayer() {
 	CheckUserStat(supportInst)
 
 	CheckMap(adminInst)
-	CheckMap(playerInst)
-	CheckMap(supportInst)
+	// CheckMap(playerInst)
+	// CheckMap(supportInst)
 }
-func CheckMap(mapType any) {
 
-	covertObj, ok := mapType.(users.User)
+type req struct {
+	Types int
+}
+
+func CheckMap(mapType any) {
+	fmt.Println("mapType", mapType)
+	covertObj, ok := mapType.(req)
 	if !ok {
 		fmt.Println("err")
 	}
-	switch covertObj.TpUser {
-	case users.ADMIN:
-		adminInst, _ := mapType.(admin.Admin)
-		admin.ADMIN_MAP[adminInst.Id] = adminInst
-	case users.PLAYER:
-		playerInst, _ := mapType.(player.Player)
-		player.PLAYER_MAP[playerInst.Id] = playerInst
-	case users.SUPPORT:
-		supportInst, _ := mapType.(support.Support)
-		support.SUPPORT_MAP[supportInst.Id] = supportInst
-		}
+
+	fmt.Println("covertObj", covertObj)
+	// switch covertObj.TpUser {
+	// case users.ADMIN:
+	// 	adminInst, _ := mapType.(admin.Admin)
+	// 	admin.ADMIN_MAP[adminInst.Id] = adminInst
+	// case users.PLAYER:
+	// 	playerInst, _ := mapType.(player.Player)
+	// 	player.PLAYER_MAP[playerInst.Id] = playerInst
+	// case users.SUPPORT:
+	// 	supportInst, _ := mapType.(support.Support)
+	// 	support.SUPPORT_MAP[supportInst.Id] = supportInst
+	// 	}
 	}
